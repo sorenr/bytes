@@ -8,13 +8,11 @@ void write_bytes_seq(const T *ptr) {
     uint8_t *ptr_i = (uint8_t*)ptr;
     printf("%lu:", sizeof(T));
     // print each byte
-    int len = sizeof(T);
     for(int i=0; i < sizeof(T); i++) {
         // print the first 4 bits
         printf("%x", ptr_i[i] >> 4);
         // print the second 4 bits
         printf("%x", ptr_i[i] & 0xf);
-        ptr_i++;
     }
 }
 
@@ -68,7 +66,7 @@ int main(int argc, char **argv) {
     assert(0 == (uint64_t)good % sizeof(uint32_t));
 
     // write a value to 'good' and read it back
-    *good = 1234;
+    *good = 0x12345678;
     pptr_seq("good", good);
     pptr("good", good);
     printf("\n");
@@ -80,7 +78,7 @@ int main(int argc, char **argv) {
     assert(SHIFT == (uint64_t)bad % sizeof(uint32_t));
 
     // write a value to 'bad' and read it back
-    *bad = 5678;
+    *bad = 0x90abcdef;
     pptr_seq("bad", bad);
     pptr("bad", bad);
     printf("\n");

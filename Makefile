@@ -1,8 +1,8 @@
 CXX=g++
-CXXFLAGS=-Iinclude # -DDEBUG
+CXXFLAGS=-Wall # -DDEBUG
 DEPS=Makefile
 
-test: bytes.cpp
+bytes: bytes.o
 	$(CXX) $^ -o bytes
 
 %.o: %.cpp %.h $(DEPS)
